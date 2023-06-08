@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1>won's</h1>
+<hr />
+<ul>
+<li><a href="<%requeest.getContextPath() %>/hello.do">hello Servlet</a>
+</li>
+
+</ul>
+
+
+</body>
+</html>

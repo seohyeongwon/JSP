@@ -1,0 +1,73 @@
+package org.comstudy;
+
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.util.concurrent.Executor;
+
+import com.sun.net.httpserver.HttpContext;
+import com.sun.net.httpserver.HttpHandler;
+import com.sun.net.httpserver.HttpServer;
+
+public class helloservlet extends HttpServer {
+
+	@Override
+	public void bind(InetSocketAddress addr, int backlog) throws IOException {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void start() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setExecutor(Executor executor) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public Executor getExecutor() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void stop(int delay) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public HttpContext createContext(String path, HttpHandler handler) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public HttpContext createContext(String path) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void removeContext(String path) throws IllegalArgumentException {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void removeContext(HttpContext context) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public InetSocketAddress getAddress() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

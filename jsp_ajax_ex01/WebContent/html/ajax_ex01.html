@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1>Ajax ex01</h1>
+<div id="demo"></div>
+<hr/>
+User: <input type="text" id="user" value="KIM"/><br />
+Message: <input type="text" id="msg" value="Student"/><br />
+<button id="loadBtn">Load</button>
+
+<script>
+function loadData(user, msg) {
+   var xhr = new XMLHttpRequest();
+   xhr.onload = function() {
+      var txt = xhr.responseText.trim();
+      console.log(txt);
+      var obj = JSON.parse(txt);
+      document.getElementById("demo").innerHTML = obj.user+", "+obj.msg;
+   }
+   xhr.open("GET", `http://localhost:8088/jsp_ajax_ex01/html/ajax_ex01.html`, true);
+   xhr.send();
+}
+
+document.getElementById("loadBtn").onclick = function() {
+   var user = document.getElementById("user").value;
+   var msg = document.getElementById("msg").value;
+   loadData(user, msg);
+}
+</script>
+
+</body>
+</html>

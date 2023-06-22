@@ -14,11 +14,11 @@ public class BoardDAO_JDBC {
 	private PreparedStatement stmt;
 	private ResultSet rs;
 
-	final String SELECT_ALL = "select * from board1 ORDER BY num desc";
-	final String SELECT_ONE = "select * from board1 where num=?";
-	final String INSERT = "insert into board1(num,author,email,title,content,password) values(board1_seq.nextval,?,?,?,?,?)";
-	final String UPDATE = "update board1 set title=?, content=? where num=?";
-	final String DELETE = "DELETE from board1 where num=?";
+	final String SELECT_ALL = "select * from board ORDER BY num desc";
+	final String SELECT_ONE = "select * from board where num=?";
+	final String INSERT = "insert into board(num,author,email,title,content,password) values(board_seq.nextval,?,?,?,?,?)";
+	final String UPDATE = "update board set title=?, content=? where num=?";
+	final String DELETE = "DELETE from board where num=?";
 	
 	public List<BoardDTO> selectAll() {
 		List<BoardDTO> list = new ArrayList<BoardDTO>();

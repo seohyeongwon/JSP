@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1>자바스크립트 forEach문 예제</h1>
+<ul id="demo"></ul>
+
+<script>
+// var arr = new Array();
+var arr = ['오징어','꼴뚜기','대구','명태','거북이','상어'];
+
+//console.log(arr);
+//document.write(arr);
+//alert(arr);
+//document.querySelector("#demo").innerText = arr;
+//document.getElementById("demo").innerHTML = arr;
+
+var demoArea = document.getElementById("demo");
+arr.forEach(function(value, index, array) {
+	//array.pop();
+	//console.log(array);
+	demoArea.innerHTML += `<li>${value}</li>`;
+});
+</script>
+
+</body>
+</html>

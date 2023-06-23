@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1>forEach를 이용한 List 구현</h1>
+<hr/>
+<form id="form">
+	id: <input name="id" value="CHOI"/><br />
+	name: <input name="name" value="민재"/><br />
+	age: <input name="age" value="15"/><br />
+	<input type="submit" value="저장"/>
+</form>
+<hr/>
+검색: 
+<select id="searchType">
+	<option value="id">id</option>
+	<option value="name">name</option>
+</select>
+<input id="searchWord" /><input type="button" value="검색" id="searBtn"/>
+<hr/>
+<table id="listArea" border="1" width="600">
+<!-- 자바스크립트로 목록을 삽입한다. -->
+</table>
+<script>
+var listArea = document.querySelector("#listArea");
+var form = document.querySelector("#form");
+var searchWord = document.querySelector("#searchWord");
+var searBtn = document.querySelector("#searBtn");
+var searchType = document.querySelector("#searchType");
+
+const saramList = [
+	{"seq":1, "id":"HONG", "name":"길동", "age":21},
+	{"seq":2, "id":"KIM", "name":"길순", "age":31},
+	{"seq":3, "id":"LEE", "name":"길자", "age":24},
+	{"seq":4, "id":"PARK", "name":"재동", "age":29},
+	{"seq":5, "id":"KANG", "name":"기동", "age":65}
+];
+
+function drawTbl(list) {
+	// 중요: 테이블 초기화 필수
+	listArea.innerHTML = "";
+	list.forEach(function(value, index, array) {
+		var rowData = `<td>${value['seq']}</td><td>${value['id']}</td><td>${value['name']}</td><td>${value['age']}</td>`;
+		listArea.innerHTML += "<tr>"+rowData+"</tr>";
+	});
+}
+drawTbl(saramList);
+
+// 검색 버튼 이벤트 핸들러
+function searchAction(event) {
+	var keyword = searchWord.value;
+	var type = searchType.value;
+	var newSaramList = saramList.filter(function(saramObj){
+		return saramObj[type].indexOf(keyword) != -1;
+	});
+	drawTbl(newSaramList);
+}
+// 자바스크립트는 함수도 참조 가능하다.
+searBtn.addEventListener("click", searchAction);
+searchWord.addEventListener("keyup", searchAction);
+
+// 새 데이터 저장
+function maxSeq0() {
+	var max = -1;
+	for(var i=0; i<saramList.length; i++) {
+		if(saramList[i].seq > max) {
+			max = saramList[i].seq;
+		}
+	}
+	return max;
+}
+function maxSeq() {
+	var seqArr = [];
+	saramList.forEach(function(obj) {
+		seqArr.push(obj['seq']);
+	});
+	seqArr.sort();
+	return seqArr[seqArr.length-1];
+}
+// form.onsubmit = function(event){}
+form.addEventListener("submit", function(event) {
+	event.preventDefault(); // form의 기본 기능 해제
+	// form의 데이터를 saramList에 저장하기
+	var max = maxSeq();
+	saramList.push({'seq':max+1, "id":this.id.value, "name":this.name.value, "age":this.age.value})
+
+	// 표 갱신하기
+	drawTbl(saramList);
+});
+</script>
+</body>
+</html>

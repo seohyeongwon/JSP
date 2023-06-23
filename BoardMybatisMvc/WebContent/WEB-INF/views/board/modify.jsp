@@ -34,17 +34,24 @@
 			<tr>
 				<td width="100" align="right">내용 :&nbsp;</td>
 				<td><textarea rows="10" cols="65" maxlength="4000"
-						name="content">할말은??</textarea></td>
+						name="content">${board.content }</textarea></td>
 			</tr>
-			
 			<tr>
 				<td width="100" align="right">&nbsp;</td>
 				<td><input type="submit" value="저장" />
 					<button>
 						<a href="list.do" style="text-decoration: none">취소</a>
 					</button></td>
+
 			</tr>
+
+
+
 		</table>
+
+
+
 	</form>
+
 </body>
 </html>

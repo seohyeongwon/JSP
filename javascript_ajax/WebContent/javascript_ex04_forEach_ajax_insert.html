@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1>forEach를 이용한 List 구현</h1>
+<hr/>
+<form id="form">
+	id: <input name="id" value="CHOI"/><br />
+	name: <input name="name" value="민재"/><br />
+	age: <input name="age" value="15"/><br />
+	<input type="submit" value="저장"/>
+</form>
+<hr/>
+검색: 
+<select id="searchType">
+	<option value="id">id</option>
+	<option value="name">name</option>
+</select>
+<input id="searchWord" /><input type="button" value="검색" id="searBtn"/>
+<hr/>
+<table id="listArea" border="1" width="600">
+<!-- 자바스크립트로 목록을 삽입한다. -->
+</table>
+<script>
+var listArea = document.querySelector("#listArea");
+var form = document.querySelector("#form");
+var searchWord = document.querySelector("#searchWord");
+var searBtn = document.querySelector("#searBtn");
+var searchType = document.querySelector("#searchType");
+
+var saramList = [];
+
+function drawTbl(list) {
+	// 중요: 테이블 초기화 필수
+	listArea.innerHTML = "";
+	list.forEach(function(value, index, array) {
+		var rowData = `<td>${value['seq']}</td><td>${value['id']}</td><td>${value['name']}</td><td>${value['age']}</td>`;
+		listArea.innerHTML += "<tr>"+rowData+"</tr>";
+	});
+}
+drawTbl(saramList);
+
+function myGetAjax(id, name, age) {
+	var xhr = new XMLHttpRequest();
+	xhr.onload = function() {
+		saramList = JSON.parse( xhr.responseText.trim() );
+		drawTbl(saramList);
+	}
+	xhr.open("GET", `saram_input.jsp?id=${id}&name=${name}&age=${age}`, true);
+	xhr.send();
+}
+
+function myAjax() {
+	var xhr = new XMLHttpRequest();
+	xhr.onload = function() {
+		saramList = JSON.parse( xhr.responseText.trim() );
+		drawTbl(saramList);
+	}
+	xhr.open("GET", "saram_data.jsp", true);
+	xhr.send();
+}
+myAjax();
+
+
+
+// 검색 버튼 이벤트 핸들러
+function searchAction(event) {
+	var keyword = searchWord.value;
+	var type = searchType.value;
+	var newSaramList = saramList.filter(function(saramObj){
+		return saramObj[type].indexOf(keyword) != -1;
+	});
+	drawTbl(newSaramList);
+}
+// 자바스크립트는 함수도 참조 가능하다.
+searBtn.addEventListener("click", searchAction);
+searchWord.addEventListener("keyup", searchAction);
+
+// 새 데이터 저장
+form.addEventListener("submit", function(event) {
+	event.preventDefault(); // form의 기본 기능 해제
+	var id = this.id.value;
+	var name = this.name.value;
+	var age = this.age.value;
+	// Ajax를 이용해서 서버로전달
+	// 새 목록 갱신
+	myGetAjax(id, name, age);
+});
+</script>
+</body>
+</html>

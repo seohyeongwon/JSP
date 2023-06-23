@@ -13,7 +13,7 @@ public class BoardDTO {
 	private int rep_step;
 	private int rep_indent;
 	
-	public BoardDTO() {
+	public BoardDTO(int num, String title, String email, String content) {
 		this(0,"","","","","","",0,0,0,0);
 	}
 	

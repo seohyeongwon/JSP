@@ -29,11 +29,10 @@
 				<td><input type="text" size="67" maxlength="500" name="title"
 					value="title"></input></td>
 			</tr>
-
 			<tr>
 				<td width="100" align="right">비번 :&nbsp;</td>
-				<td><input type="password" size="67" maxlength="500"
-					name="password" value="1234"></input></td>
+				<td><input type="password" size="67" maxlength="500" name="password"
+					value="1234"></input></td>
 			</tr>
 
 			<tr>
@@ -41,6 +40,10 @@
 				<td><textarea rows="10" cols="65" maxlength="4000"
 						name="content">할말은??</textarea></td>
 			</tr>
+
+
+
+
 
 			<tr>
 				<td width="50" align="right">&nbsp;</td>

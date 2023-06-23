@@ -12,13 +12,13 @@
 <body>
 	<h1>자유 게시판</h1>
 	<table width="100%" border="1">
-		
 		<tr>
 			<th width="5%">num</th>
-			<th width="50%">title</th>
-			<th width="18%">author</th>
-			<th width="20%">writeday</th>
-			<th width="7%">readcnt</th>
+			<th width="20%">title</th>
+			<th width="10%">author</th>
+			<th width="50%">content</th>
+			<th width="15%">writeday</th>
+			<th width="5%">readcnt</th>
 		</tr>
 		
 		<c:forEach var="board" items="${list }">
@@ -26,6 +26,7 @@
 				<td>${board.num }</td>
 				<td><a href="detail.do?num=${board.num }">${board.title }</a></td>
 				<td>${board.author }</td>
+				<td>${board.content }</td>
 				<td>${board.writeday }</td>
 				<td>${board.readcnt }</td>
 			</tr>

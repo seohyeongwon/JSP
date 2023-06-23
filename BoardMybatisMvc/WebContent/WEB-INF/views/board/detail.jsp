@@ -10,26 +10,35 @@
 <body>
 
 	<h1>상세보기</h1>
+	
 	<table width="100%" border="1">
-		<tr>
-			<th width="5%">num</th>
-			<th width="50%">title</th>
-			<th width="18%">author</th>
-			<th width="20%">writeday</th>
-			<th width="7%">readcnt</th>
-		</tr>
 
-		<tr>
-			<td>${board.num }</td>
-			<td>${board.title }</td>
-			<td>${board.author }</td>
-			<td>${board.writeday }</td>
-			<td>${board.readcnt }</td>
-		</tr>
+			<tr>
+				<td width="100" align="right">작성자 :&nbsp;</td>
+				<td><input type="text" size="20" maxlength="100" name="author"
+					value="${board.author }" disabled></td>
+			</tr>
+
+			<tr>
+				<td width="100" align="right">전자메일 :&nbsp;</td>
+				<td><input type="text" size="30" maxlength="200" name="email"
+					value="${board.email }" disabled></td>
+			</tr>
+
+			<tr>
+				<td width="100" align="right">제목 :&nbsp;</td>
+				<td><input type="text" size="67" maxlength="500" name="title"
+					value="${board.title }" disabled></td>
+			</tr>
+
+			<tr>
+				<td width="100" align="right">내용 :&nbsp;</td>
+				<td><textarea rows="10" cols="65" maxlength="4000"
+						name="content" value="${board.content }" disabled>${board.content }</textarea></td>
+			</tr>
+	
+	
 	</table>
-	<p>
-		<a href="modify.do?num=${board.num}">수정</a> 
-		<a href="delete.do?num=${board.num}">삭제</a>
-	</p>
+			<p><a href="modify.do?num=${board.num}">수정</a> <a href="delete.do?num=${board.num}">삭제</a></p>
 </body>
 </html>
